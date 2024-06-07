@@ -1,34 +1,36 @@
 plugins {
-
-    /**
-     * Use `apply false` in the top-level build.gradle file to add a Gradle
-     * plugin as a build dependency but not apply it to the current (root)
-     * project. Don't use `apply false` in sub-projects. For more information,
-     * see Applying external plugins with same version to subprojects.
-     */
-
-    // id("com.android.application") version "8.4.0" apply false
-    alias(libs.plugins.android.app) // apply false
-    alias(libs.plugins.android.lib) apply false
-    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
-    namespace = "com.example.myapp"
-
-    compileSdk = 33
+    namespace = "com.example"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.myapp"
-
+        applicationId = "com.example"
         minSdk = 21
-
-        targetSdk = 33
+        targetSdk = 34
 
         versionCode = 1
         versionName = "1.0"
     }
-
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 
 
 }
