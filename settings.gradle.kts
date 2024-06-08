@@ -1,3 +1,5 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -15,5 +17,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "gradle-multi-module"
-include(":app")
+include(":desktopApp")
 include(":androidApp")
+include(":core-ui")

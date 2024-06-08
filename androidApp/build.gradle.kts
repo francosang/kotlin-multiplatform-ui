@@ -1,20 +1,29 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
+}
+
+kotlin {
+    androidTarget()
 }
 
 android {
-    namespace = "com.example"
-    compileSdk = 34
+    namespace = "org.jetbrains.nav_cupcake"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.example"
-        minSdk = 21
-        targetSdk = 34
-
+        applicationId = "org.jetbrains.nav_cupcake"
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
     buildTypes {
         getByName("release") {
@@ -26,27 +35,30 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.13"
+    kotlin {
+        jvmToolchain(17)
     }
 }
 
 dependencies {
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    implementation(projects.coreUi)
 
-    debugImplementation(libs.androidx.ui.tooling)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.androidx.activity.compose)
+
+    debugImplementation(libs.compose.ui.tooling)
+
+    implementation(libs.kotlinx.datetime)
+
+    implementation(compose.foundation)
+    implementation(compose.material3)
+    implementation(compose.components.resources)
+    implementation(compose.components.uiToolingPreview)
+
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.navigation.compose)
 }
