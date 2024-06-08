@@ -10,11 +10,11 @@ kotlin {
 }
 
 android {
-    namespace = "org.jetbrains.nav_cupcake"
+    namespace = "com.jfranco.multiplatform"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "org.jetbrains.nav_cupcake"
+        applicationId = "com.jfranco.multiplatform"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1

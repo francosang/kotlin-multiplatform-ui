@@ -35,7 +35,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "org.jetbrains.nav_cupcake"
+            packageName = "com.jfranco.multiplatform"
             packageVersion = "1.0.0"
         }
     }
