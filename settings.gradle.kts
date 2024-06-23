@@ -16,7 +16,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "gradle-multi-module"
+rootProject.name = "kotlin-multiplatform-ui"
 include(":desktopApp")
 include(":androidApp")
 include(":core-ui")
