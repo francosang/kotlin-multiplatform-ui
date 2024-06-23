@@ -20,3 +20,5 @@ rootProject.name = "gradle-multi-module"
 include(":desktopApp")
 include(":androidApp")
 include(":core-ui")
+include(":shared")
+// include(":kotlinmultiplatformsharedmodule")

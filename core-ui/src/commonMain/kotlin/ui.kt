@@ -4,11 +4,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import java.io.File
+import com.jfranco.shared.Greeting
 
 @Composable
-fun Greeting() {
+fun GreetingUi() {
     Box(Modifier.fillMaxSize()) {
-        Text("Hola!", Modifier.align(Alignment.Center))
+        Text(Greeting.greet(), Modifier.align(Alignment.Center))
     }
 }
